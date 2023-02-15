@@ -9,16 +9,21 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
- private static final String[] AUTH_WHITELIST = {
-   "/project"
- };
+  private static final String[] AUTH_WHITELIST = {
+      "/project"
+  };
 
- @Bean
- public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-  http
-    .authorizeHttpRequests(authorize -> authorize
-      .requestMatchers(AUTH_WHITELIST).permitAll()
-      .anyRequest().authenticated());
-  return http.build();
- }
+  private static final String[] AUTH_BLACKLIST = {
+      "/"
+  };
+
+  @Bean
+  public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    http
+        .authorizeHttpRequests(authorize -> authorize
+            // .requestMatchers(AUTH_BLACKLIST).authenticated()
+            .requestMatchers(AUTH_WHITELIST).permitAll());
+    // .formLogin();
+    return http.build();
+  }
 }
