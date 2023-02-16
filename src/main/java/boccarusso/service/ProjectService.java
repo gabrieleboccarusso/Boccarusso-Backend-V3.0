@@ -43,4 +43,16 @@ public class ProjectService {
 
   return new ResponseEntity<Project>(result, status);
  }
+
+ public ResponseEntity<Project> deleteProject(String id) {
+  HttpStatus status = HttpStatus.NOT_FOUND;
+
+  if (this.dao.exists(id)) {
+   this.dao.delete(id);
+   status = HttpStatus.OK;
+  }
+
+  return new ResponseEntity<>(status);
+ }
+
 }
