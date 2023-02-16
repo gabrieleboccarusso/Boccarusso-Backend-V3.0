@@ -3,26 +3,34 @@ package boccarusso.service;
 import static boccarusso.Functions.sanitize;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import boccarusso.DAO.ProjectDAO;
 import boccarusso.entity.Project;
-import boccarusso.repository.ProjectRepository;
 
 @Service
 public class ProjectService {
  @Autowired
- private ProjectRepository projectRepository;
+ private ProjectDAO dao;
 
  public Iterable<Project> getAllProjects() {
-  return this.projectRepository.findAll();
+  return this.dao.getAll();
  }
 
- public void postProject(Project p) {
-  // TODO
-  // check if project already exists
-  // return responseEntity
+ public ResponseEntity<Project> postProject(Project p) {
+  // TODO: accept project DTO as argument
+  Project result = null;
+  HttpStatus status = HttpStatus.BAD_REQUEST;
 
   p.setSlug(sanitize(p.getTitle()));
-  this.projectRepository.save(p);
+
+  if (!this.dao.exists(p.getSlug())) {
+   result = this.dao.post(p);
+   status = HttpStatus.OK;
+  }
+
+  return new ResponseEntity<Project>(result, status);
  }
 }

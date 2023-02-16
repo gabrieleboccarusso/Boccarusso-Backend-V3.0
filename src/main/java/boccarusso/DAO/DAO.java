@@ -1,16 +1,17 @@
 package boccarusso.DAO;
 
-import java.util.Collection;
 import java.util.Optional;
 
 public interface DAO<T> {
  Optional<T> get(String id);
 
- Collection<T> getAll();
+ Iterable<T> getAll();
 
- boolean save(T t);
+ T post(T t);
 
  boolean update(T t);
 
- boolean delete(T t);
+ boolean delete(String id);
+
+ boolean exists(String id);
 }
