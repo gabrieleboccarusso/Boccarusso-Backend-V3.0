@@ -9,7 +9,7 @@ public interface DAO<T> {
 
  T post(T t);
 
- boolean update(T t);
+ boolean put(T t);
 
  boolean delete(String id);
 
