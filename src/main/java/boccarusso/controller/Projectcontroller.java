@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import boccarusso.DTO.ProjectDTO;
 import boccarusso.entity.Project;
 import boccarusso.service.ProjectService;
 
@@ -23,7 +24,7 @@ public class Projectcontroller {
  }
 
  @PostMapping
- ResponseEntity<Project> post(@RequestBody Project p) {
+ ResponseEntity<Project> post(@RequestBody ProjectDTO p) {
   return this.projectService.postProject(p);
  }
 }
