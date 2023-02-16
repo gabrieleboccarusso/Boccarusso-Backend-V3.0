@@ -37,6 +37,10 @@ public class ProjectDAO implements DAO<Project> {
   return flag;
  }
 
+ public void deleteExisting(String id) {
+  this.projectRepository.deleteById(id);
+ }
+
  public boolean put(Project p) {
   // TODO: make behavior that checks if it is actually updated
   this.projectRepository.save(p);

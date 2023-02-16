@@ -61,7 +61,7 @@ public class ProjectService {
 
   if (this.dao.exists(id)) {
    project = this.dao.getExisting(id);
-   this.dao.delete(id);
+   this.dao.deleteExisting(id);
    project.setSlug(new_title);
    project.setTitle(new_title);
    this.dao.post(project);
