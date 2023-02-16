@@ -55,4 +55,19 @@ public class ProjectService {
   return new ResponseEntity<>(status);
  }
 
+ public ResponseEntity<Project> patchProjectTitle(String id, String new_title) {
+  HttpStatus status = HttpStatus.NOT_FOUND;
+  Project project = null;
+
+  if (this.dao.exists(id)) {
+   project = this.dao.getExisting(id);
+   this.dao.delete(id);
+   project.setSlug(new_title);
+   project.setTitle(new_title);
+   this.dao.post(project);
+   status = HttpStatus.OK;
+  }
+
+  return new ResponseEntity<Project>(project, status);
+ }
 }
