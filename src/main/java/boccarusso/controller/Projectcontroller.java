@@ -1,8 +1,11 @@
 package boccarusso.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,5 +29,10 @@ public class Projectcontroller {
  @PostMapping
  ResponseEntity<Project> post(@RequestBody ProjectDTO p) {
   return this.projectService.postProject(p);
+ }
+
+ @GetMapping("/{slug}")
+ ResponseEntity<Project> getById(@PathVariable String slug) {
+  return this.projectService.getProjectById(slug);
  }
 }

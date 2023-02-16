@@ -17,6 +17,10 @@ public class ProjectDAO implements DAO<Project> {
   return this.projectRepository.findById(id);
  }
 
+ public Project getExisting(String id) {
+  return this.projectRepository.findById(id).get();
+ }
+
  public Iterable<Project> getAll() {
   return this.projectRepository.findAll();
  }

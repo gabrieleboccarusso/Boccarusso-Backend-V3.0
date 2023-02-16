@@ -1,5 +1,7 @@
 package boccarusso.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +29,18 @@ public class ProjectService {
    status = HttpStatus.OK;
   } else {
    result = null;
+  }
+
+  return new ResponseEntity<Project>(result, status);
+ }
+
+ public ResponseEntity<Project> getProjectById(String id) {
+  HttpStatus status = HttpStatus.NOT_FOUND;
+  Project result = null;
+
+  if (this.dao.exists(id)) {
+   status = HttpStatus.OK;
+   result = this.dao.getExisting(id);
   }
 
   return new ResponseEntity<Project>(result, status);
