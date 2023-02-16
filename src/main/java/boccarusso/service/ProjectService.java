@@ -70,4 +70,18 @@ public class ProjectService {
 
   return new ResponseEntity<Project>(project, status);
  }
+
+ public ResponseEntity<Project> patchProjectIntro(String id, String new_intro) {
+  HttpStatus status = HttpStatus.NOT_FOUND;
+  Project project = null;
+
+  if (this.dao.exists(id)) {
+   project = this.dao.getExisting(id);
+   project.setIntro(new_intro);
+   this.dao.put(project);
+   status = HttpStatus.OK;
+  }
+
+  return new ResponseEntity<Project>(project, status);
+ }
 }
