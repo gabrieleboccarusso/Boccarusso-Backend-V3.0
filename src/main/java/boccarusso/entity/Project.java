@@ -29,4 +29,8 @@ public class Project {
   this.title = dto.getTitle();
   this.repo = dto.getRepo();
  }
+
+ public void setSlug(String s) {
+  this.slug = sanitize(s);
+ }
 }
