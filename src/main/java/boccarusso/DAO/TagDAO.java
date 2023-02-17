@@ -3,10 +3,12 @@ package boccarusso.DAO;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import boccarusso.entity.Tag;
 import boccarusso.repository.TagRepository;
 
+@Component
 public class TagDAO implements DAO<Tag> {
  @Autowired
  private TagRepository tagRepository;
