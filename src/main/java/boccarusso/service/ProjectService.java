@@ -98,4 +98,18 @@ public class ProjectService {
 
   return new ResponseEntity<Project>(project, status);
  }
+
+ public ResponseEntity<Project> patchProjectRepo(String id, String repo) {
+  HttpStatus status = HttpStatus.NOT_FOUND;
+  Project project = null;
+
+  if (this.dao.exists(id)) {
+   project = this.dao.getExisting(id);
+   project.setRepo(repo);
+   this.dao.save(project);
+   status = HttpStatus.OK;
+  }
+
+  return new ResponseEntity<Project>(project, status);
+ }
 }

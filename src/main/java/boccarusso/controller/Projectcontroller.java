@@ -56,4 +56,9 @@ public class Projectcontroller {
  ResponseEntity<Project> patchProjectImage(@PathVariable String slug, @RequestParam String value) {
   return this.projectService.patchProjectImage(slug, value);
  }
+
+ @PatchMapping("/{slug}/repo")
+ ResponseEntity<Project> patchProjectRepo(@PathVariable String slug, @RequestParam String value) {
+  return this.projectService.patchProjectRepo(slug, value);
+ }
 }
