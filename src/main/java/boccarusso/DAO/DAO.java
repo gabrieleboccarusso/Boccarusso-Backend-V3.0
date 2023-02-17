@@ -11,9 +11,9 @@ public interface DAO<T> {
 
  T save(T t);
 
+ boolean exists(String id);
+
  boolean delete(String id);
 
  void deleteExisting(String id);
-
- boolean exists(String id);
 }
