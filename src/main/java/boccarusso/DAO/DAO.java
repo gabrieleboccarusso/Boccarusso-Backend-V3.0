@@ -9,9 +9,7 @@ public interface DAO<T> {
 
  Iterable<T> getAll();
 
- T post(T t);
-
- boolean put(T t);
+ T save(T t);
 
  boolean delete(String id);
 

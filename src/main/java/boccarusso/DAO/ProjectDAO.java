@@ -41,13 +41,7 @@ public class ProjectDAO implements DAO<Project> {
   this.projectRepository.deleteById(id);
  }
 
- public boolean put(Project p) {
-  // TODO: make behavior that checks if it is actually updated
-  this.projectRepository.save(p);
-  return true;
- }
-
- public Project post(Project p) {
+ public Project save(Project p) {
   return this.projectRepository.save(p);
  }
 

@@ -23,7 +23,7 @@ public class ProjectService {
   HttpStatus status = HttpStatus.BAD_REQUEST;
 
   if (!this.dao.exists(result.getSlug())) {
-   result = this.dao.post(result);
+   result = this.dao.save(result);
    status = HttpStatus.OK;
   } else {
    result = null;
@@ -64,7 +64,7 @@ public class ProjectService {
    this.dao.deleteExisting(id);
    project.setSlug(new_title);
    project.setTitle(new_title);
-   this.dao.post(project);
+   this.dao.save(project);
    status = HttpStatus.OK;
   }
 
@@ -78,7 +78,7 @@ public class ProjectService {
   if (this.dao.exists(id)) {
    project = this.dao.getExisting(id);
    project.setIntro(new_intro);
-   this.dao.put(project);
+   this.dao.save(project);
    status = HttpStatus.OK;
   }
 
@@ -92,7 +92,7 @@ public class ProjectService {
   if (this.dao.exists(id)) {
    project = this.dao.getExisting(id);
    project.setImage(image);
-   this.dao.put(project);
+   this.dao.save(project);
    status = HttpStatus.OK;
   }
 
