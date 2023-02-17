@@ -48,7 +48,6 @@ public class ProjectDAO implements DAO<Project> {
  }
 
  public Project post(Project p) {
-  // TODO: make behavior that checks if it is actually saved
   return this.projectRepository.save(p);
  }
 

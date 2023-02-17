@@ -84,4 +84,18 @@ public class ProjectService {
 
   return new ResponseEntity<Project>(project, status);
  }
+
+ public ResponseEntity<Project> patchProjectImage(String id, String image) {
+  HttpStatus status = HttpStatus.NOT_FOUND;
+  Project project = null;
+
+  if (this.dao.exists(id)) {
+   project = this.dao.getExisting(id);
+   project.setImage(image);
+   this.dao.put(project);
+   status = HttpStatus.OK;
+  }
+
+  return new ResponseEntity<Project>(project, status);
+ }
 }
