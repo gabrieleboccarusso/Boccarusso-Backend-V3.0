@@ -29,7 +29,7 @@ public class SuperService<T> {
  public ResponseEntity<T> post(T t, String id) {
   HttpStatus status = HttpStatus.BAD_REQUEST;
 
-  if (this.dao.exists(id)) {
+  if (!this.dao.exists(id)) {
    this.dao.save(t);
    status = HttpStatus.OK;
   } else {

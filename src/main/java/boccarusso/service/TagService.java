@@ -14,7 +14,7 @@ public class TagService extends SuperService<Tag> {
  @Autowired
  private TagDAO tagDao;
 
- public ResponseEntity<Tag> postTag(TagDTO tagDto) {
+ public ResponseEntity<Tag> post(TagDTO tagDto) {
   Tag tag = new Tag(tagDto);
 
   return super.post(tag, tag.getSlug());

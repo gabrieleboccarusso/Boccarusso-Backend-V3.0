@@ -29,7 +29,7 @@ public class TagController {
 
  @PostMapping
  ResponseEntity<Tag> postTag(@RequestBody TagDTO t) {
-  return this.tagService.postTag(t);
+  return this.tagService.post(t);
  }
 
  @GetMapping("/{slug}")
