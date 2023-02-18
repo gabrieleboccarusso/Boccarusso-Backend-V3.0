@@ -26,6 +26,19 @@ public class SuperService<T> {
   return new ResponseEntity<T>(result, status);
  }
 
+ public ResponseEntity<T> post(T t, String id) {
+  HttpStatus status = HttpStatus.BAD_REQUEST;
+
+  if (this.dao.exists(id)) {
+   this.dao.save(t);
+   status = HttpStatus.OK;
+  } else {
+   t = null;
+  }
+
+  return new ResponseEntity<T>(t, status);
+ }
+
  public ResponseEntity<T> delete(String id) {
   HttpStatus status = HttpStatus.NOT_FOUND;
 
