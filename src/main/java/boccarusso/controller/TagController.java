@@ -39,7 +39,7 @@ public class TagController {
 
  @DeleteMapping("/{slug}")
  ResponseEntity<Tag> deleteTag(@PathVariable String slug) {
-  return this.tagService.deleteTag(slug);
+  return this.tagService.delete(slug);
  }
 
  @PatchMapping("/{slug}/name")

@@ -25,4 +25,14 @@ public class SuperService<T> {
 
   return new ResponseEntity<T>(result, status);
  }
+
+ public ResponseEntity<T> delete(String id) {
+  HttpStatus status = HttpStatus.NOT_FOUND;
+
+  if (this.dao.delete(id)) {
+   status = HttpStatus.OK;
+  }
+
+  return new ResponseEntity<>(status);
+ }
 }

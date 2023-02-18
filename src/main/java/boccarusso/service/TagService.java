@@ -28,16 +28,6 @@ public class TagService extends SuperService<Tag> {
   return new ResponseEntity<Tag>(result, status);
  }
 
- public ResponseEntity<Tag> deleteTag(String id) {
-  HttpStatus status = HttpStatus.NOT_FOUND;
-
-  if (this.tagDao.delete(id)) {
-   status = HttpStatus.OK;
-  }
-
-  return new ResponseEntity<>(status);
- }
-
  public ResponseEntity<Tag> PatchTagName(String id, String value) {
   HttpStatus status = HttpStatus.NOT_FOUND;
   Tag tag = null;
