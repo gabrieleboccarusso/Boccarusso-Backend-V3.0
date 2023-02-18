@@ -24,22 +24,22 @@ public class ProjectController {
 
  @GetMapping
  Iterable<Project> getAll() {
-  return this.projectService.getAllProjects();
+  return this.projectService.getAll();
  }
 
  @PostMapping
  ResponseEntity<Project> post(@RequestBody ProjectDTO p) {
-  return this.projectService.postProject(p);
+  return this.projectService.post(p);
  }
 
  @GetMapping("/{slug}")
  ResponseEntity<Project> getById(@PathVariable String slug) {
-  return this.projectService.getProjectById(slug);
+  return this.projectService.getById(slug);
  }
 
  @DeleteMapping("/{slug}")
  ResponseEntity<Project> deleteById(@PathVariable String slug) {
-  return this.projectService.deleteProject(slug);
+  return this.projectService.delete(slug);
  }
 
  @PatchMapping("/{slug}/title")

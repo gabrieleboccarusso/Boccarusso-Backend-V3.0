@@ -16,7 +16,7 @@ public class SuperService<T> {
 
  public ResponseEntity<T> getById(String id) {
   T result = null;
-  HttpStatus status = HttpStatus.BAD_REQUEST;
+  HttpStatus status = HttpStatus.NOT_FOUND;
 
   if (this.dao.exists(id)) {
    result = this.dao.getExisting(id);

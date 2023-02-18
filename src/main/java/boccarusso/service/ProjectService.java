@@ -10,48 +10,14 @@ import boccarusso.DTO.ProjectDTO;
 import boccarusso.entity.Project;
 
 @Service
-public class ProjectService {
+public class ProjectService extends SuperService<Project> {
  @Autowired
  private ProjectDAO dao;
 
- public Iterable<Project> getAllProjects() {
-  return this.dao.getAll();
- }
+ public ResponseEntity<Project> post(ProjectDTO dto) {
+  Project project = new Project(dto);
 
- public ResponseEntity<Project> postProject(ProjectDTO dto) {
-  Project result = new Project(dto);
-  HttpStatus status = HttpStatus.BAD_REQUEST;
-
-  if (!this.dao.exists(result.getSlug())) {
-   result = this.dao.save(result);
-   status = HttpStatus.OK;
-  } else {
-   result = null;
-  }
-
-  return new ResponseEntity<Project>(result, status);
- }
-
- public ResponseEntity<Project> getProjectById(String id) {
-  HttpStatus status = HttpStatus.NOT_FOUND;
-  Project result = null;
-
-  if (this.dao.exists(id)) {
-   status = HttpStatus.OK;
-   result = this.dao.getExisting(id);
-  }
-
-  return new ResponseEntity<Project>(result, status);
- }
-
- public ResponseEntity<Project> deleteProject(String id) {
-  HttpStatus status = HttpStatus.NOT_FOUND;
-
-  if (this.dao.delete(id)) {
-   status = HttpStatus.OK;
-  }
-
-  return new ResponseEntity<>(status);
+  return super.post(project, project.getSlug());
  }
 
  public ResponseEntity<Project> patchProjectTitle(String id, String new_title) {
