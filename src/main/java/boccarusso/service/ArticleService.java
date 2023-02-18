@@ -10,13 +10,9 @@ import boccarusso.DTO.ArticleDTO;
 import boccarusso.entity.Article;
 
 @Service
-public class ArticleService {
+public class ArticleService extends SuperService<Article> {
  @Autowired
  ArticleDAO ArticleDao;
-
- public Iterable<Article> getAllArticles() {
-  return this.ArticleDao.getAll();
- }
 
  public ResponseEntity<Article> postArticle(ArticleDTO dto) {
   Article result = new Article(dto);

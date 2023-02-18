@@ -20,7 +20,7 @@ public class ArticleController {
 
  @GetMapping
  Iterable<Article> getAllArticle() {
-  return this.articleService.getAllArticles();
+  return this.articleService.getAll();
  }
 
  @PostMapping
