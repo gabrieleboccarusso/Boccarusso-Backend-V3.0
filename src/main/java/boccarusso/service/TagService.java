@@ -53,4 +53,20 @@ public class TagService {
 
   return new ResponseEntity<>(status);
  }
+
+ public ResponseEntity<Tag> PatchTagName(String id, String value) {
+  HttpStatus status = HttpStatus.NOT_FOUND;
+  Tag tag = null;
+
+  if (this.tagDao.exists(id)) {
+   tag = this.tagDao.getExisting(id);
+   this.tagDao.deleteExisting(id);
+   tag.setName(value);
+   tag.setSlug(value);
+   this.tagDao.save(tag);
+   status = HttpStatus.OK;
+  }
+
+  return new ResponseEntity<Tag>(tag, status);
+ }
 }
