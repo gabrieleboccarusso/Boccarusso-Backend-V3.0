@@ -1,7 +1,7 @@
 package boccarusso;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import static java.time.LocalDate.now;
+import static java.time.format.DateTimeFormatter.ofPattern;
 
 public class Functions {
   public static String sanitize(String s) {
@@ -11,6 +11,6 @@ public class Functions {
   }
 
   public static String getCurrentDate() {
-    return LocalDate.now().format(DateTimeFormatter.ofPattern("dd MMM yyyy"));
+    return now().format(ofPattern("dd MMM yyyy"));
   }
 }
