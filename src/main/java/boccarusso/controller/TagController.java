@@ -24,7 +24,7 @@ public class TagController {
 
  @GetMapping
  Iterable<Tag> getAllTags() {
-  return this.tagService.getAllTags();
+  return this.tagService.getAll();
  }
 
  @PostMapping
