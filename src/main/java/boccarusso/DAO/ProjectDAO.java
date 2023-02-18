@@ -26,12 +26,11 @@ public class ProjectDAO implements DAO<Project> {
  }
 
  public boolean delete(String id) {
-  boolean flag = true;
+  boolean flag = false;
 
-  this.projectRepository.deleteById(id);
-
-  if (this.projectRepository.existsById(id)) {
-   flag = false;
+  if (this.exists(id)) {
+   this.projectRepository.deleteById(id);
+   flag = true;
   }
 
   return flag;

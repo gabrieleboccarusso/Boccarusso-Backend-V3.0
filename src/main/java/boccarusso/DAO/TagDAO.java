@@ -34,12 +34,11 @@ public class TagDAO implements DAO<Tag> {
  }
 
  public boolean delete(String id) {
-  boolean flag = true;
-
-  this.tagRepository.deleteById(id);
+  boolean flag = false;
 
   if (this.exists(id)) {
-   flag = false;
+   this.tagRepository.deleteById(id);
+   flag = true;
   }
 
   return flag;
