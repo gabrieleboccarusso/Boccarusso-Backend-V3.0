@@ -15,17 +15,9 @@ public class TagService extends SuperService<Tag> {
  private TagDAO tagDao;
 
  public ResponseEntity<Tag> postTag(TagDTO tagDto) {
-  Tag result = new Tag(tagDto);
-  HttpStatus status = HttpStatus.BAD_REQUEST;
+  Tag tag = new Tag(tagDto);
 
-  if (!this.tagDao.exists(result.getSlug())) {
-   result = this.tagDao.save(result);
-   status = HttpStatus.OK;
-  } else {
-   result = null;
-  }
-
-  return new ResponseEntity<Tag>(result, status);
+  return super.post(tag, tag.getSlug());
  }
 
  public ResponseEntity<Tag> PatchTagName(String id, String value) {
