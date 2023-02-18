@@ -31,4 +31,16 @@ public class TagService {
 
   return new ResponseEntity<Tag>(result, status);
  }
+
+ public ResponseEntity<Tag> getTagById(String id) {
+  Tag result = null;
+  HttpStatus status = HttpStatus.BAD_REQUEST;
+
+  if (this.tagDao.exists(id)) {
+   result = this.tagDao.getExisting(id);
+   status = HttpStatus.OK;
+  }
+
+  return new ResponseEntity<Tag>(result, status);
+ }
 }

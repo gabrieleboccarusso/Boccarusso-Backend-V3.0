@@ -3,6 +3,7 @@ package boccarusso.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,5 +27,10 @@ public class Tagcontroller {
  @PostMapping
  ResponseEntity<Tag> postTag(@RequestBody TagDTO t) {
   return this.tagService.postTag(t);
+ }
+
+ @GetMapping("/{slug}")
+ ResponseEntity<Tag> getTagById(@PathVariable String slug) {
+  return this.tagService.getTagById(slug);
  }
 }
