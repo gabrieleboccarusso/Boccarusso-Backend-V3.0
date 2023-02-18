@@ -34,7 +34,7 @@ public class TagController {
 
  @GetMapping("/{slug}")
  ResponseEntity<Tag> getTagById(@PathVariable String slug) {
-  return this.tagService.getTagById(slug);
+  return this.tagService.getById(slug);
  }
 
  @DeleteMapping("/{slug}")
