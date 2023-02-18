@@ -2,7 +2,9 @@ package boccarusso.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +27,16 @@ public class ArticleController {
 
  @PostMapping
  ResponseEntity<Article> postArticle(@RequestBody ArticleDTO dto) {
-  return this.articleService.postArticle(dto);
+  return this.articleService.post(dto);
+ }
+
+ @GetMapping("/{slug}")
+ ResponseEntity<Article> getTagById(@PathVariable String slug) {
+  return this.articleService.getById(slug);
+ }
+
+ @DeleteMapping("/{slug}")
+ ResponseEntity<Article> deleteTag(@PathVariable String slug) {
+  return this.articleService.delete(slug);
  }
 }
