@@ -10,13 +10,9 @@ import boccarusso.DTO.TagDTO;
 import boccarusso.entity.Tag;
 
 @Service
-public class TagService {
+public class TagService extends SuperService<Tag> {
  @Autowired
  private TagDAO tagDao;
-
- public Iterable<Tag> getAllTags() {
-  return this.tagDao.getAll();
- }
 
  public ResponseEntity<Tag> postTag(TagDTO tagDto) {
   Tag result = new Tag(tagDto);
