@@ -22,11 +22,11 @@ public abstract class SuperDAO<T> implements DAO<T> {
  }
 
  public T save(T t) {
-  return this.save(t);
+  return this.repo.save(t);
  }
 
  public boolean exists(String id) {
-  return this.exists(id);
+  return this.repo.existsById(id);
  }
 
  public boolean delete(String id) {
