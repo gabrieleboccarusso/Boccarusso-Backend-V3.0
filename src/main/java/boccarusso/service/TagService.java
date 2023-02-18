@@ -43,4 +43,14 @@ public class TagService {
 
   return new ResponseEntity<Tag>(result, status);
  }
+
+ public ResponseEntity<Tag> deleteTag(String id) {
+  HttpStatus status = HttpStatus.NOT_FOUND;
+
+  if (this.tagDao.delete(id)) {
+   status = HttpStatus.OK;
+  }
+
+  return new ResponseEntity<>(status);
+ }
 }
