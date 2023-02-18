@@ -2,8 +2,8 @@ package boccarusso.DAO;
 
 import org.springframework.stereotype.Component;
 
-import boccarusso.entity.Project;
+import boccarusso.entity.Article;
 
 @Component
-public class ProjectDAO extends SuperDAO<Project> {
+public class ArticleDAO extends SuperDAO<Article> {
 }
