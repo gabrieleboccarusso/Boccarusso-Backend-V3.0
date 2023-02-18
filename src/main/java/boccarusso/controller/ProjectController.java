@@ -18,7 +18,7 @@ import boccarusso.service.ProjectService;
 
 @RestController
 @RequestMapping("/project")
-public class Projectcontroller {
+public class ProjectController {
  @Autowired
  private ProjectService projectService;
 

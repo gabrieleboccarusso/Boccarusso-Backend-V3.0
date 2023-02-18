@@ -18,7 +18,7 @@ import boccarusso.service.TagService;
 
 @RestController
 @RequestMapping("/tag")
-public class Tagcontroller {
+public class TagController {
  @Autowired
  private TagService tagService;
 
