@@ -1,7 +1,6 @@
 package boccarusso.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +10,7 @@ import boccarusso.entity.Tag;
 
 @Service
 public class TagService extends SuperService<Tag> {
+
  @Autowired
  private TagDAO tagDao;
 
@@ -20,19 +20,30 @@ public class TagService extends SuperService<Tag> {
   return super.post(tag, tag.getSlug());
  }
 
+ /*
+  * public ResponseEntity<Tag> PatchTagName(String id, String value) {
+  * HttpStatus status = HttpStatus.NOT_FOUND;
+  * Tag tag = null;
+  * 
+  * if (this.tagDao.exists(id)) {
+  * tag = this.tagDao.getExisting(id);
+  * this.tagDao.deleteExisting(id);
+  * tag.setName(value);
+  * tag.setSlug(value);
+  * this.tagDao.save(tag);
+  * status = HttpStatus.OK;
+  * }
+  * 
+  * return new ResponseEntity<Tag>(tag, status);
+  * }
+  */
+
  public ResponseEntity<Tag> PatchTagName(String id, String value) {
-  HttpStatus status = HttpStatus.NOT_FOUND;
-  Tag tag = null;
-
-  if (this.tagDao.exists(id)) {
-   tag = this.tagDao.getExisting(id);
+  return super.patch(id, (Tag t) -> {
    this.tagDao.deleteExisting(id);
-   tag.setName(value);
-   tag.setSlug(value);
-   this.tagDao.save(tag);
-   status = HttpStatus.OK;
-  }
-
-  return new ResponseEntity<Tag>(tag, status);
+   t.setName(value);
+   t.setSlug(value);
+   return t;
+  });
  }
 }
