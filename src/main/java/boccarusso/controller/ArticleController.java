@@ -1,5 +1,7 @@
 package boccarusso.controller;
 
+import java.util.HashSet;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -70,5 +72,10 @@ public class ArticleController {
  @PatchMapping("/{slug}/content")
  ResponseEntity<Article> patchArticleContent(@PathVariable String slug, @RequestParam String value) {
   return this.articleService.patchArticleContent(slug, value);
+ }
+
+ @PostMapping("/{slug}/tag")
+ ResponseEntity<Article> postArticleTag(@PathVariable String slug, @RequestBody HashSet<String> tags) {
+  return this.articleService.addArticleTag(slug, tags);
  }
 }
