@@ -43,4 +43,34 @@ public class ArticleService extends SuperService<Article> {
  public Iterable<Article> getWithTag(String tag_slug) {
   return this.ArticleDao.getArticlesWithTag(tag_slug);
  }
+
+ public ResponseEntity<Article> patchArticleTitle(String id, String title) {
+  return super.patch(id, (Article a) -> {
+   this.ArticleDao.deleteExisting(id);
+   a.setSlug(title);
+   a.setTitle(title);
+   return a;
+  });
+ }
+
+ public ResponseEntity<Article> patchArticleIntro(String id, String intro) {
+  return super.patch(id, (Article a) -> {
+   a.setIntro(intro);
+   return a;
+  });
+ }
+
+ public ResponseEntity<Article> patchArticleImage(String id, String image) {
+  return super.patch(id, (Article a) -> {
+   a.setImage(image);
+   return a;
+  });
+ }
+
+ public ResponseEntity<Article> patchArticleContent(String id, String content) {
+  return super.patch(id, (Article a) -> {
+   a.setContent(content);
+   return a;
+  });
+ }
 }
