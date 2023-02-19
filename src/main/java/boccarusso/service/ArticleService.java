@@ -17,7 +17,7 @@ public class ArticleService extends SuperService<Article> {
  @Autowired
  ArticleDAO ArticleDao;
 
- private void tagsValidator(Article a, HashSet<String> tags) {
+ private void addTags(Article a, HashSet<String> tags) {
   Optional<Tag> tag;
 
   for (String slug : tags) {
@@ -29,9 +29,21 @@ public class ArticleService extends SuperService<Article> {
   }
  }
 
+ private void removeTags(Article a, HashSet<String> tags) {
+  Optional<Tag> tag;
+
+  for (String slug : tags) {
+   tag = this.ArticleDao.checkTagExistence(slug);
+
+   if (!tag.isEmpty()) {
+    a.removeTag(tag.get());
+   }
+  }
+ }
+
  public ResponseEntity<Article> post(ArticleDTO dto) {
   Article article = new Article(dto);
-  this.tagsValidator(article, dto.getTagSlugs());
+  this.addTags(article, dto.getTagSlugs());
 
   return super.post(article, article.getSlug());
  }
@@ -78,7 +90,14 @@ public class ArticleService extends SuperService<Article> {
   // although the method is logically more adapt to a POST
   // using the patch parent method provides more flexibility
   return super.patch(id, (Article a) -> {
-   this.tagsValidator(a, tagSlugs);
+   this.addTags(a, tagSlugs);
+   return a;
+  });
+ }
+
+ public ResponseEntity<Article> removeArticleTag(String id, HashSet<String> tagSlugs) {
+  return super.patch(id, (Article a) -> {
+   this.removeTags(a, tagSlugs);
    return a;
   });
  }

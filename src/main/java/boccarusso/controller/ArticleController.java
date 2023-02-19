@@ -78,4 +78,9 @@ public class ArticleController {
  ResponseEntity<Article> postArticleTag(@PathVariable String slug, @RequestBody HashSet<String> tags) {
   return this.articleService.addArticleTag(slug, tags);
  }
+
+ @DeleteMapping("/{slug}/tag")
+ ResponseEntity<Article> deleteArticleTag(@PathVariable String slug, @RequestBody HashSet<String> tags) {
+  return this.articleService.removeArticleTag(slug, tags);
+ }
 }

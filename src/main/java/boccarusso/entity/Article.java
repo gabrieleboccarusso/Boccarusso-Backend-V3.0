@@ -61,4 +61,8 @@ public class Article {
  public void addTag(Tag t) {
   this.tag.add(t);
  }
+
+ public void removeTag(Tag t) {
+  this.tag.remove(t);
+ }
 }
