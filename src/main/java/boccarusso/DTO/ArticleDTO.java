@@ -1,6 +1,6 @@
 package boccarusso.DTO;
 
-import java.util.List;
+import java.util.HashSet;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,5 +14,5 @@ public class ArticleDTO {
  private String intro;
  private String image;
  private String content;
- private List<String> tagSlugs;
+ private HashSet<String> tagSlugs;
 }
