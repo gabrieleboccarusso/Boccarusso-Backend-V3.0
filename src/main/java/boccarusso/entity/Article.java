@@ -52,4 +52,8 @@ public class Article {
  public void setLastUpdate() {
   this.lastUpdate = getCurrentDate();
  }
+
+ public void addTag(Tag t) {
+  this.tags.add(t);
+ }
 }
