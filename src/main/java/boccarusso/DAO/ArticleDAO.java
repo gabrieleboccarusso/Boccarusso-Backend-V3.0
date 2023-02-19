@@ -23,4 +23,8 @@ public class ArticleDAO extends SuperDAO<Article> {
  public Optional<Tag> checkTagExistence(String id) {
   return this.tagDao.get(id);
  }
+
+ public Iterable<Article> getArticlesWithTag(String tag_slug) {
+  return this.articleRepository.findByTagSlug(tag_slug);
+ }
 }

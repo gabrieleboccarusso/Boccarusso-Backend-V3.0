@@ -45,4 +45,9 @@ public class ArticleController {
  Iterable<Article> getArticleByTitle(@RequestParam String value) {
   return this.articleService.getByTitle(value);
  }
+
+ @GetMapping("/tag")
+ Iterable<Article> getArticlewithTagSlug(@RequestParam String value) {
+  return this.articleService.getWithTag(value);
+ }
 }

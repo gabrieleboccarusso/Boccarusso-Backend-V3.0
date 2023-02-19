@@ -39,4 +39,8 @@ public class ArticleService extends SuperService<Article> {
  public Iterable<Article> getByTitle(String title) {
   return this.ArticleDao.getArticlesByTitle(title);
  }
+
+ public Iterable<Article> getWithTag(String tag_slug) {
+  return this.ArticleDao.getArticlesWithTag(tag_slug);
+ }
 }
