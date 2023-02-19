@@ -10,7 +10,6 @@ import boccarusso.entity.Tag;
 
 @Service
 public class TagService extends SuperService<Tag> {
-
  @Autowired
  private TagDAO tagDao;
 

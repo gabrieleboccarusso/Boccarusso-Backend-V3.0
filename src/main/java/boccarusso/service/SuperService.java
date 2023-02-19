@@ -49,17 +49,19 @@ public class SuperService<T> {
   return new ResponseEntity<>(status);
  }
 
- interface specificPatch<T> {
+ interface patchFn<T> {
   T run(T t);
  }
 
- public ResponseEntity<T> patch(String id, specificPatch<T> patch) {
+ public ResponseEntity<T> patch(String id, patchFn<T> patch) {
   HttpStatus status = HttpStatus.NOT_FOUND;
   T t = null;
 
   if (this.dao.exists(id)) {
    t = this.dao.getExisting(id);
+
    t = patch.run(t);
+
    this.dao.save(t);
    status = HttpStatus.OK;
   }
