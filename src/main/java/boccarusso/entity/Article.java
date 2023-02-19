@@ -33,7 +33,7 @@ public class Article {
 
  @ManyToMany(fetch = FetchType.EAGER)
  @JoinTable(name = "article_tag", joinColumns = @JoinColumn(name = "article_slug"), inverseJoinColumns = @JoinColumn(name = "tag_slug"))
- private List<Tag> tags = new ArrayList<>();
+ private List<Tag> tag = new ArrayList<>();
 
  public Article(ArticleDTO dto) {
   this.slug = sanitize(dto.getTitle());
@@ -54,6 +54,6 @@ public class Article {
  }
 
  public void addTag(Tag t) {
-  this.tags.add(t);
+  this.tag.add(t);
  }
 }
