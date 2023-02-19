@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -49,5 +50,25 @@ public class ArticleController {
  @GetMapping("/tag")
  Iterable<Article> getArticlewithTagSlug(@RequestParam String value) {
   return this.articleService.getWithTag(value);
+ }
+
+ @PatchMapping("/{slug}/title")
+ ResponseEntity<Article> patchArticleTitle(@PathVariable String slug, @RequestParam String value) {
+  return this.articleService.patchArticleTitle(slug, value);
+ }
+
+ @PatchMapping("/{slug}/intro")
+ ResponseEntity<Article> patchArticleIntro(@PathVariable String slug, @RequestParam String value) {
+  return this.articleService.patchArticleIntro(slug, value);
+ }
+
+ @PatchMapping("/{slug}/image")
+ ResponseEntity<Article> patchArticleImage(@PathVariable String slug, @RequestParam String value) {
+  return this.articleService.patchArticleImage(slug, value);
+ }
+
+ @PatchMapping("/{slug}/content")
+ ResponseEntity<Article> patchArticleContent(@PathVariable String slug, @RequestParam String value) {
+  return this.articleService.patchArticleContent(slug, value);
  }
 }
