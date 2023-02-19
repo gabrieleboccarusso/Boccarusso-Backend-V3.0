@@ -36,13 +36,17 @@ public class Article {
  private List<Tag> tag = new ArrayList<>();
 
  public Article(ArticleDTO dto) {
-  this.slug = sanitize(dto.getTitle());
+  this.setSlug(dto.getTitle());
   this.title = dto.getTitle();
   this.intro = dto.getIntro();
   this.image = dto.getImage();
   this.content = dto.getContent();
   this.setCreationDate();
   this.setLastUpdate();
+ }
+
+ public void setSlug(String s) {
+  this.slug = sanitize(s);
  }
 
  public void setCreationDate() {
