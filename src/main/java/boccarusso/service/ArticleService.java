@@ -61,6 +61,7 @@ public class ArticleService extends SuperService<Article> {
    this.ArticleDao.deleteExisting(id);
    a.setSlug(title);
    a.setTitle(title);
+   a.setLastUpdate();
    return a;
   });
  }
@@ -68,6 +69,7 @@ public class ArticleService extends SuperService<Article> {
  public ResponseEntity<Article> patchArticleIntro(String id, String intro) {
   return super.patch(id, (Article a) -> {
    a.setIntro(intro);
+   a.setLastUpdate();
    return a;
   });
  }
@@ -75,6 +77,7 @@ public class ArticleService extends SuperService<Article> {
  public ResponseEntity<Article> patchArticleImage(String id, String image) {
   return super.patch(id, (Article a) -> {
    a.setImage(image);
+   a.setLastUpdate();
    return a;
   });
  }
@@ -82,6 +85,7 @@ public class ArticleService extends SuperService<Article> {
  public ResponseEntity<Article> patchArticleContent(String id, String content) {
   return super.patch(id, (Article a) -> {
    a.setContent(content);
+   a.setLastUpdate();
    return a;
   });
  }
@@ -91,6 +95,7 @@ public class ArticleService extends SuperService<Article> {
   // using the patch parent method provides more flexibility
   return super.patch(id, (Article a) -> {
    this.addTags(a, tagSlugs);
+   a.setLastUpdate();
    return a;
   });
  }
