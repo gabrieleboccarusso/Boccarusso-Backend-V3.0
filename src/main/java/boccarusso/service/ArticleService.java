@@ -18,4 +18,8 @@ public class ArticleService extends SuperService<Article> {
 
   return super.post(article, article.getSlug());
  }
+
+ public Iterable<Article> getByTitle(String title) {
+  return this.ArticleDao.getArticlesByTitle(title);
+ }
 }
