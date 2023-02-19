@@ -1,5 +1,7 @@
 package boccarusso.DTO;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,4 +14,5 @@ public class ArticleDTO {
  private String intro;
  private String image;
  private String content;
+ private List<String> tagSlugs;
 }
