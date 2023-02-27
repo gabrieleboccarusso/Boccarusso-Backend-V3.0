@@ -6,15 +6,15 @@ import org.springframework.http.ResponseEntity;
 
 import boccarusso.DAO.SuperDAO;
 
-public class SuperService<T> {
+public class SuperService<T, I> {
  @Autowired
- private SuperDAO<T> dao;
+ private SuperDAO<T, I> dao;
 
  public Iterable<T> getAll() {
   return this.dao.getAll();
  }
 
- public ResponseEntity<T> getById(String id) {
+ public ResponseEntity<T> getById(I id) {
   T result = null;
   HttpStatus status = HttpStatus.NOT_FOUND;
 
@@ -26,7 +26,7 @@ public class SuperService<T> {
   return new ResponseEntity<T>(result, status);
  }
 
- public ResponseEntity<T> post(T t, String id) {
+ public ResponseEntity<T> post(T t, I id) {
   HttpStatus status = HttpStatus.BAD_REQUEST;
 
   if (!this.dao.exists(id)) {
@@ -39,7 +39,7 @@ public class SuperService<T> {
   return new ResponseEntity<T>(t, status);
  }
 
- public ResponseEntity<T> delete(String id) {
+ public ResponseEntity<T> delete(I id) {
   HttpStatus status = HttpStatus.NOT_FOUND;
 
   if (this.dao.delete(id)) {
@@ -53,7 +53,7 @@ public class SuperService<T> {
   T run(T t);
  }
 
- public ResponseEntity<T> patch(String id, patchFn<T> patch) {
+ public ResponseEntity<T> patch(I id, patchFn<T> patch) {
   HttpStatus status = HttpStatus.NOT_FOUND;
   T t = null;
 
