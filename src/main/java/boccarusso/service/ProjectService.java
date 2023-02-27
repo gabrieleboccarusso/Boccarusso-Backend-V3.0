@@ -9,7 +9,7 @@ import boccarusso.DTO.ProjectDTO;
 import boccarusso.entity.Project;
 
 @Service
-public class ProjectService extends SuperService<Project> {
+public class ProjectService extends SuperService<Project, String> {
  @Autowired
  private ProjectDAO projectDao;
 

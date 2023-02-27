@@ -9,7 +9,7 @@ import boccarusso.DTO.TagDTO;
 import boccarusso.entity.Tag;
 
 @Service
-public class TagService extends SuperService<Tag> {
+public class TagService extends SuperService<Tag, String> {
  @Autowired
  private TagDAO tagDao;
 

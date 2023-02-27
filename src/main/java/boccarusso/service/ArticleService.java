@@ -13,7 +13,7 @@ import boccarusso.entity.Article;
 import boccarusso.entity.Tag;
 
 @Service
-public class ArticleService extends SuperService<Article> {
+public class ArticleService extends SuperService<Article, String> {
  @Autowired
  ArticleDAO ArticleDao;
 
