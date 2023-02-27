@@ -10,7 +10,7 @@ import boccarusso.entity.Tag;
 import boccarusso.repository.ArticleRepository;
 
 @Component
-public class ArticleDAO extends SuperDAO<Article> {
+public class ArticleDAO extends SuperDAO<Article, String> {
  @Autowired
  private ArticleRepository articleRepository;
  @Autowired
