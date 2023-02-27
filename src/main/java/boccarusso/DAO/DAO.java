@@ -2,18 +2,18 @@ package boccarusso.DAO;
 
 import java.util.Optional;
 
-public interface DAO<T> {
- Optional<T> get(String id);
+public interface DAO<T, I> {
+ Optional<T> get(I id);
 
- T getExisting(String id);
+ T getExisting(I id);
 
  Iterable<T> getAll();
 
  T save(T t);
 
- boolean exists(String id);
+ boolean exists(I id);
 
- boolean delete(String id);
+ boolean delete(I id);
 
- void deleteExisting(String id);
+ void deleteExisting(I id);
 }

@@ -5,15 +5,15 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public abstract class SuperDAO<T> implements DAO<T> {
+public abstract class SuperDAO<T, I> implements DAO<T, I> {
  @Autowired
- JpaRepository<T, String> repo;
+ JpaRepository<T, I> repo;
 
- public Optional<T> get(String id) {
+ public Optional<T> get(I id) {
   return this.repo.findById(id);
  }
 
- public T getExisting(String id) {
+ public T getExisting(I id) {
   return this.repo.findById(id).get();
  }
 
@@ -25,11 +25,11 @@ public abstract class SuperDAO<T> implements DAO<T> {
   return this.repo.save(t);
  }
 
- public boolean exists(String id) {
+ public boolean exists(I id) {
   return this.repo.existsById(id);
  }
 
- public boolean delete(String id) {
+ public boolean delete(I id) {
   if (this.exists(id)) {
    this.repo.deleteById(id);
    return true;
@@ -38,7 +38,7 @@ public abstract class SuperDAO<T> implements DAO<T> {
   }
  }
 
- public void deleteExisting(String id) {
+ public void deleteExisting(I id) {
   this.repo.deleteById(id);
  }
 
