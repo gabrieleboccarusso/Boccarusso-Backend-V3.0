@@ -3,6 +3,8 @@ package boccarusso.DAO;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public abstract class SuperDAO<T, I> implements DAO<T, I> {
@@ -19,6 +21,10 @@ public abstract class SuperDAO<T, I> implements DAO<T, I> {
 
  public Iterable<T> getAll() {
   return this.repo.findAll();
+ }
+
+ public Page<T> getAll(Pageable pageable) {
+  return this.repo.findAll(pageable);
  }
 
  public T save(T t) {
