@@ -14,6 +14,11 @@ public class SuperService<T, I> {
   return this.dao.getAll();
  }
 
+ public Iterable<T> getAll(int page, int size) {
+  System.out.println(page + " " +  size);
+  return null;
+ }
+
  public ResponseEntity<T> getById(I id) {
   T result = null;
   HttpStatus status = HttpStatus.NOT_FOUND;
