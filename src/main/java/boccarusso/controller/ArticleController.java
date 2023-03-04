@@ -25,8 +25,11 @@ public class ArticleController {
  ArticleService articleService;
 
  @GetMapping
- Iterable<Article> getAllArticle() {
-  return this.articleService.getAll();
+ Iterable<Article> getAllArticle(
+  @RequestParam(required = false, defaultValue = "0") int page,
+  @RequestParam(required = false, defaultValue = "2") int size
+ ) {
+  return this.articleService.getAll(page, size);
  }
 
  @PostMapping
