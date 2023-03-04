@@ -26,8 +26,8 @@ public class ArticleController {
 
  @GetMapping
  Iterable<Article> getAllArticle(
-  @RequestParam(required = false, defaultValue = "0") int page,
-  @RequestParam(required = false, defaultValue = "2") int size
+  @RequestParam(required = false) Integer page,
+  @RequestParam(required = false) Integer size
  ) {
   return this.articleService.getAll(page, size);
  }

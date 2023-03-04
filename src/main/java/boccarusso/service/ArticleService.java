@@ -45,6 +45,22 @@ public class ArticleService extends SuperService<Article, String> {
   }
  }
 
+ public Iterable<Article> getAll(Integer page, Integer size) {
+  // if they are both null then get all
+  Iterable<Article> result;
+  if (page == null && size == null) {
+   result = super.getAll();
+  } else {
+   // ternary operator used to set default values
+   result = super.getAll(
+    (page == null) ? 0 : page.intValue(),
+    (size == null) ? 2 : size.intValue()
+   );
+  }
+
+  return result;
+ }
+
  public ResponseEntity<Article> post(ArticleDTO dto) {
   Article article = new Article(dto);
   this.addTags(article, dto.getTagSlugs());
