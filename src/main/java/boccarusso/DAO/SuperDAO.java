@@ -10,6 +10,10 @@ public abstract class SuperDAO<T, I> implements DAO<T, I> {
  @Autowired
  JpaRepository<T, I> repo;
 
+ public long count() {
+  return this.repo.count();
+ }
+
  public Optional<T> get(I id) {
   return this.repo.findById(id);
  }

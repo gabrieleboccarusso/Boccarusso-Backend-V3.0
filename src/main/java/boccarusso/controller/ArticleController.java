@@ -32,6 +32,11 @@ public class ArticleController {
   return this.articleService.getAll(page, size);
  }
 
+ @GetMapping("/total")
+ long getTotalNum() {
+  return this.articleService.getTotalNum();
+ }
+
  @PostMapping
  ResponseEntity<Article> postArticle(@RequestBody ArticleDTO dto) {
   return this.articleService.post(dto);

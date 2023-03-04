@@ -11,6 +11,10 @@ public class SuperService<T, I> {
  @Autowired
  private SuperDAO<T, I> dao;
 
+ public long getTotalNum() {
+  return this.dao.count();
+ }
+
  public Iterable<T> getAll() {
   return this.dao.getAll();
  }
