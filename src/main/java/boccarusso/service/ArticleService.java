@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import boccarusso.DAO.ArticleDAO;
+import boccarusso.DAO.TagDAO;
 import boccarusso.DTO.ArticleDTO;
 import boccarusso.entity.Article;
 import boccarusso.entity.Tag;
@@ -15,13 +16,16 @@ import boccarusso.entity.Tag;
 @Service
 public class ArticleService extends SuperService<Article, String> {
  @Autowired
- ArticleDAO ArticleDao;
+ TagDAO tagDao;
+
+ @Autowired
+ ArticleDAO articleDao;
 
  private void addTags(Article a, HashSet<String> tags) {
   Optional<Tag> tag;
 
   for (String slug : tags) {
-   tag = this.ArticleDao.checkTagExistence(slug);
+   tag = this.tagDao.get(slug);
 
    if (!tag.isEmpty()) {
     a.addTag(tag.get());
@@ -33,7 +37,7 @@ public class ArticleService extends SuperService<Article, String> {
   Optional<Tag> tag;
 
   for (String slug : tags) {
-   tag = this.ArticleDao.checkTagExistence(slug);
+   tag = this.tagDao.get(slug);
 
    if (!tag.isEmpty()) {
     a.removeTag(tag.get());
@@ -49,16 +53,16 @@ public class ArticleService extends SuperService<Article, String> {
  }
 
  public Iterable<Article> getByTitle(String title) {
-  return this.ArticleDao.getArticlesByTitle(title);
+  return this.articleDao.getArticlesByTitle(title);
  }
 
  public Iterable<Article> getWithTag(String tag_slug) {
-  return this.ArticleDao.getArticlesWithTag(tag_slug);
+  return this.articleDao.getArticlesWithTag(tag_slug);
  }
 
  public ResponseEntity<Article> patchArticleTitle(String id, String title) {
   return super.patch(id, (Article a) -> {
-   this.ArticleDao.deleteExisting(id);
+   this.articleDao.deleteExisting(id);
    a.setSlug(title);
    a.setTitle(title);
    a.setLastUpdate();
