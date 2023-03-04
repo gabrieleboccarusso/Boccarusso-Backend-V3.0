@@ -1,6 +1,7 @@
 package boccarusso.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -15,8 +16,7 @@ public class SuperService<T, I> {
  }
 
  public Iterable<T> getAll(int page, int size) {
-  System.out.println(page + " " +  size);
-  return null;
+  return this.dao.getAll(PageRequest.of(page, size));
  }
 
  public ResponseEntity<T> getById(I id) {
