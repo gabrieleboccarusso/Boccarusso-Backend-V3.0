@@ -67,9 +67,9 @@ public class ArticleController {
   return this.articleService.patchArticleTitle(slug, value);
  }
 
- @PatchMapping("/{slug}/intro")
- ResponseEntity<Article> patchArticleIntro(@PathVariable String slug, @RequestParam String value) {
-  return this.articleService.patchArticleIntro(slug, value);
+ @PatchMapping("/{slug}/tagline")
+ ResponseEntity<Article> patchArticleTagline(@PathVariable String slug, @RequestParam String value) {
+  return this.articleService.patchArticleTagline(slug, value);
  }
 
  @PatchMapping("/{slug}/image")

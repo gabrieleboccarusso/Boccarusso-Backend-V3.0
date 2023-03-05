@@ -86,9 +86,9 @@ public class ArticleService extends SuperService<Article, String> {
   });
  }
 
- public ResponseEntity<Article> patchArticleIntro(String id, String intro) {
+ public ResponseEntity<Article> patchArticleTagline(String id, String intro) {
   return super.patch(id, (Article a) -> {
-   a.setIntro(intro);
+   a.setTagline(intro);
    a.setLastUpdate();
    return a;
   });

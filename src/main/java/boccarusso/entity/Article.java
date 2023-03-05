@@ -26,7 +26,7 @@ public class Article {
  @Id
  private String slug;
  private String title;
- private String intro;
+ private String tagline;
  private String image;
  private String content;
  private String creationDate;
@@ -39,7 +39,7 @@ public class Article {
  public Article(ArticleDTO dto) {
   this.setSlug(dto.getTitle());
   this.title = dto.getTitle();
-  this.intro = dto.getIntro();
+  this.tagline = dto.getIntro();
   this.image = dto.getImage();
   this.content = dto.getContent();
   this.setCreationDate();
