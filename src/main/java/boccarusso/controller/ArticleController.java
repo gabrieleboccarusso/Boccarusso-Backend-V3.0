@@ -86,6 +86,11 @@ public class ArticleController {
  ResponseEntity<Article> patchArticleCreationDate(@PathVariable String slug, @RequestParam String value) {
   return this.articleService.patchArticleCreationDate(slug, value);
  }
+ 
+ @PatchMapping("/{slug}/last_update")
+ ResponseEntity<Article> patchArticleLastUpdate(@PathVariable String slug, @RequestParam String value) {
+  return this.articleService.patchArticleLastUpdate(slug, value);
+ }
 
  @PostMapping("/{slug}/tag")
  ResponseEntity<Article> postArticleTag(@PathVariable String slug, @RequestBody HashSet<String> tags) {
