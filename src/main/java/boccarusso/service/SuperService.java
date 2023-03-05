@@ -9,7 +9,7 @@ import boccarusso.DAO.SuperDAO;
 
 public class SuperService<T, I> {
  @Autowired
- private SuperDAO<T, I> dao;
+ protected SuperDAO<T, I> dao;
 
  public long getTotalNum() {
   return this.dao.count();
