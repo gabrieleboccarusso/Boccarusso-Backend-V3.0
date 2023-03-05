@@ -78,7 +78,7 @@ public class ArticleService extends SuperService<Article, String> {
 
  public ResponseEntity<Article> patchArticleTitle(String id, String title) {
   return super.patch(id, (Article a) -> {
-   this.articleDao.deleteExisting(id);
+   this.dao.deleteExisting(id);
    a.setSlug(title);
    a.setTitle(title);
    a.setLastUpdate();
