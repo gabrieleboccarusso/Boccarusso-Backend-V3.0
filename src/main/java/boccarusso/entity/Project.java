@@ -18,14 +18,14 @@ public class Project {
  @Id
  private String slug;
  private String title;
- private String intro;
+ private String tagline;
  private String image;
  private String repo;
 
  public Project(ProjectDTO dto) {
   this.slug = sanitize(dto.getTitle());
   this.image = dto.getImage();
-  this.intro = dto.getIntro();
+  this.tagline = dto.getTagline();
   this.title = dto.getTitle();
   this.repo = dto.getRepo();
  }

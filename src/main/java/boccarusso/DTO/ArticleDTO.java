@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ArticleDTO {
  private String title;
- private String intro;
+ private String tagline;
  private String image;
  private String content;
  private HashSet<String> tagSlugs;

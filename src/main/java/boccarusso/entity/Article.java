@@ -39,7 +39,7 @@ public class Article {
  public Article(ArticleDTO dto) {
   this.setSlug(dto.getTitle());
   this.title = dto.getTitle();
-  this.tagline = dto.getIntro();
+  this.tagline = dto.getTagline();
   this.image = dto.getImage();
   this.content = dto.getContent();
   this.setCreationDate();

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ProjectDTO {
  private String title;
- private String intro;
+ private String tagline;
  private String image;
  private String repo;
 }

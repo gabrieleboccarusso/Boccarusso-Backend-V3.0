@@ -25,7 +25,7 @@ public class ProjectService extends SuperService<Project, String> {
 
  public ResponseEntity<Project> patchProjectIntro(String id, String new_intro) {
   return super.patch(id, (Project p) -> {
-   p.setIntro(new_intro);
+   p.setTagline(new_intro);
    return p;
   });
  }
