@@ -1,18 +1,13 @@
 package boccarusso.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import boccarusso.DAO.ProjectDAO;
 import boccarusso.DTO.ProjectDTO;
 import boccarusso.entity.Project;
 
 @Service
 public class ProjectService extends SuperService<Project, String> {
- @Autowired
- private ProjectDAO projectDao;
-
  public ResponseEntity<Project> post(ProjectDTO dto) {
   Project project = new Project(dto);
 
@@ -21,7 +16,7 @@ public class ProjectService extends SuperService<Project, String> {
 
  public ResponseEntity<Project> patchProjectTitle(String id, String new_title) {
   return super.patch(id, (Project p) -> {
-   this.projectDao.deleteExisting(id);
+   this.dao.deleteExisting(id);
    p.setSlug(new_title);
    p.setTitle(new_title);
    return p;
