@@ -110,6 +110,13 @@ public class ArticleService extends SuperService<Article, String> {
   });
  }
 
+ public ResponseEntity<Article> patchArticleCreationDate(String id, String creation_date) {
+  return super.patch(id, (Article a) -> {
+   a.setCreationDate(creation_date);
+   return a;
+  });
+ }
+
  public ResponseEntity<Article> addArticleTag(String id, HashSet<String> tagSlugs) {
   // although the method is logically more adapt to a POST
   // using the patch parent method provides more flexibility
