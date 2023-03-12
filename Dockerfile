@@ -1,7 +1,7 @@
 FROM openjdk:17-jdk-slim
 
 WORKDIR /app
-COPY ./target/boccarusso-3.0.0.jar /app
+COPY ./boccarusso-3.0.0.jar /app
 
 EXPOSE 8080
 
