@@ -10,9 +10,9 @@
 	</parent>
 	<groupId>boccarusso</groupId>
 	<artifactId>boccarusso</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>3.0.0</version>
 	<name>boccarusso</name>
-	<description>Demo project for Spring Boot</description>
+	<description>REST API backend for boccarusso.com </description>
 	<properties>
 		<jakarta-servlet.version>5.0.0</jakarta-servlet.version>
 		<java.version>17</java.version>
