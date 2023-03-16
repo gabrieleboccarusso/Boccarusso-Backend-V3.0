@@ -7,4 +7,4 @@ COPY . /app
 EXPOSE 8080
 
 # RUN mvn clean package
-CMD ["java", "-jar", "./target/boccarusso-3.0.0.jar"]
+CMD ["java", "-jar", "./boccarusso-3.0.0.jar"]
