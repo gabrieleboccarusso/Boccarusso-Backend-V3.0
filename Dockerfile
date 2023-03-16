@@ -5,5 +5,5 @@ COPY . /app
 
 EXPOSE 8080
 
-RUN ["./mvnw", "clean", "package"]
+RUN ./mvnw clean package
 CMD ["java", "-jar", "./target/boccarusso-3.0.0.jar"]
