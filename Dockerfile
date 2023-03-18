@@ -1,10 +1,11 @@
 FROM openjdk:17-jdk-slim
-# FROM maven:3.6.0
+FROM maven:3.9.0
 
-WORKDIR /app
-COPY . /app
+# COPY ./ /app
+COPY src/ /app/src/
+COPY ./pom.xml /app/
 
 EXPOSE 8080
 
-# RUN mvn clean package
-CMD ["java", "-jar", "./boccarusso-3.0.0.jar"]
+RUN mvn -f /app/pom.xml clean package
+CMD java -jar /app/target/boccarusso-3.0.0.jar
