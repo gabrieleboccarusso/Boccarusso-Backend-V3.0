@@ -6,19 +6,9 @@ COPY ./pom.xml /app/
 
 EXPOSE 8080
 
-# database connection parameters
-ARG DB_URL
-ARG DB_USERNAME
-ARG DB_PASSWORD
-
-# database connection parameters
-ARG MAX_POOL_SIZE
-ARG MAX_CONNECTIONS
-
 # security parameters
 ARG USERNAME
 ARG PASSWORD
-
 
 RUN mvn -f /app/pom.xml clean package
 CMD java -jar /app/target/boccarusso-3.0.0.jar
