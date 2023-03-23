@@ -11,4 +11,4 @@ ARG USERNAME
 ARG PASSWORD
 
 RUN mvn -f /app/pom.xml clean package
-CMD java -jar /app/target/boccarusso-3.0.0.jar
+RUN java -jar /app/target/boccarusso-3.0.0.jar
