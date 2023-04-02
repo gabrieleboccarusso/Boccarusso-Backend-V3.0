@@ -11,4 +11,4 @@ ARG USERNAME
 ARG PASSWORD
 
 RUN ./mvnw clean package
-CMD java -jar /app/target/boccarusso-3.0.0.jar
+CMD java -jar ./target/boccarusso-3.0.0.jar
