@@ -4,10 +4,9 @@ This repo contains the code for the third version of the backend of my personal 
 
 ## Why
 
-The first version was done using PHP and through a heavy use of SSR it was very slow.The second version rebuilds everything from scratch and is made of a frontend made in vanilla JavasScript that through the `controller.js` and `api.js` files mimics the a CSR behavior and of a backend wrote in Spring Boot that simply connects to the database to retrieve the data.
-The second version was done in my beginnings and the poor documentation along the poor practices made it quickly something not so feasible to maintain thus quickly becoming legacy code.
+The first version was done using PHP and through a heavy use of SSR it was very slow. This version rebuilds everything from scratch and is made of a frontend made in vanilla JavasScript that through the `controller.js` and `api.js` files mimics the a CSR behavior and of a backend wrote in Spring Boot that simply connects to the database to retrieve the data.
 
-This new version uses a frontend done in Angular (work in progress) and a backend wrote back from scratch in Spring Boot.
+This new version uses a frontend done in Angular and a backend wrote back from scratch in Spring Boot.
 
 ## How
 
